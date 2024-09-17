@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create User</title>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            padding: 10px;
+        }
+
+        input[type="submit"] {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        h6 {
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Add User</h1>
+
+<br/>
+<hr/>
+<br/>
+
+<form th:method="POST" th:action="@{/users}" th:object="${user}">
+    <label for="name">Enter your name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color: orange" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+    <br/>
+    <br/>
+    <label for="surName">Enter your surName: </label>
+    <input type="text" th:field="*{surName}" id="surName"/>
+    <div style="color: orange" th:if="${#fields.hasErrors('surName')}" th:errors="*{surName}">SurName error</div>
+
+    <br/>
+    <br/>
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+
+<br/>
+<hr/>
+
+<h6>
+    <button onclick="window.location.href='/users'">go back to the list of users</button>
+</h6>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        input[type="submit"] {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        h6 {
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>User</h1>
+
+<br/>
+<hr/>
+<br/>
+
+<p th:text="'ID: [ ' + ${user.getId()} + ' ]'">VALUE</p>
+<p th:text="${user.getName() + ' ' + user.getSurName()}">VALUE</p>
+
+<br/>
+<hr/>
+
+<h2>
+    <a th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a>
+</h2>
+
+<br/>
+<form th:method="POST" th:action="@{/users/{id}?action=del(id=${user.getId()})}">
+    <input type="hidden" name="_method" value="DELETE"/>
+    <input type="submit" value="Delete!"/>
+</form>
+
+<br/>
+<hr/>
+
+<h6>
+    <button onclick="window.location.href='/users'">go back to the list of users</button>
+</h6>
+
+</body>
+</html>
